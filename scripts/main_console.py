@@ -24,19 +24,19 @@ image_extensions = ('jpeg', 'png', 'jpg', 'tiff', 'gif')
 
 root_dir = os.path.abspath(os.path.dirname(__name__))
 
+# Preprocessing
+train_datagen = ImageDataGenerator(rescale=1./255, shear_range=0.2, zoom_range=0.2, horizontal_flip=True)
+training_set = train_datagen.flow_from_directory('training_images/hotels/training_images', target_size=(64, 64), 
+                                              batch_size=8, class_mode='binary')
+
+test_datagen = ImageDataGenerator(rescale=1./255)
+test_set = test_datagen.flow_from_directory('training_images/hotels/test_images', target_size=(64, 64),
+                                         batch_size=8, class_mode='binary')
 
 def train_model():
 
     print('Training the default model. Please wait...')
      
-    train_datagen = ImageDataGenerator(rescale=1./255, shear_range=0.2, zoom_range=0.2, horizontal_flip=True)
-    training_set = train_datagen.flow_from_directory('training_images/hotels/training_images', target_size=(64, 64), 
-                                                  batch_size=8, class_mode='binary')
-
-    test_datagen = ImageDataGenerator(rescale=1./255)
-    test_set = test_datagen.flow_from_directory('training_images/hotels/test_images', target_size=(64, 64),
-                                             batch_size=8, class_mode='binary')
-
     classifier = Sequential()
 
     classifier.add(Convolution2D(32, 2, 3, input_shape=(64, 64, 3), activation='relu'))
