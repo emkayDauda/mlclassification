@@ -15,6 +15,9 @@ from keras.layers import Convolution2D, MaxPooling2D, Flatten, Dense
 from keras.preprocessing.image import ImageDataGenerator
 
 
+# Ensure this script is in the same folder as the training images folder
+# as the folder references are relative in the model creation
+
 model_name = 'hotel_model.h5'
 file_name = 'classification_results.json'  
 image_extensions = ('jpeg', 'png', 'jpg', 'tiff', 'gif') 
@@ -22,19 +25,17 @@ image_extensions = ('jpeg', 'png', 'jpg', 'tiff', 'gif')
 root_dir = os.path.abspath(os.path.dirname(__name__))
 
 
-train_datagen = ImageDataGenerator(rescale=1./255, shear_range=0.2, zoom_range=0.2, horizontal_flip=True)
-training_set = train_datagen.flow_from_directory('training_images/hotels/training_images', target_size=(64, 64), 
-                                                  batch_size=8, class_mode='binary')
-
-test_datagen = ImageDataGenerator(rescale=1./255)
-test_set = test_datagen.flow_from_directory('training_images/hotels/test_images', target_size=(64, 64),
-                                             batch_size=8, class_mode='binary')
-
-
-
 def train_model():
 
     print('Training the default model. Please wait...')
+     
+    train_datagen = ImageDataGenerator(rescale=1./255, shear_range=0.2, zoom_range=0.2, horizontal_flip=True)
+    training_set = train_datagen.flow_from_directory('training_images/hotels/training_images', target_size=(64, 64), 
+                                                  batch_size=8, class_mode='binary')
+
+    test_datagen = ImageDataGenerator(rescale=1./255)
+    test_set = test_datagen.flow_from_directory('training_images/hotels/test_images', target_size=(64, 64),
+                                             batch_size=8, class_mode='binary')
 
     classifier = Sequential()
 
