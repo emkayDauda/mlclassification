@@ -5,15 +5,15 @@ import os
 import sys
 import json
 
-# import keras
-# import numpy as np
-# import tensorflow as tf
+import keras
+import numpy as np
+import tensorflow as tf
 
-# from keras.models import Sequential
-# from keras.preprocessing import image
-# from keras.models import load_model
-# from keras.layers import Convolution2D, MaxPooling2D, Flatten, Dense
-# from keras.preprocessing.image import ImageDataGenerator
+from keras.models import Sequential
+from keras.preprocessing import image
+from keras.models import load_model
+from keras.layers import Convolution2D, MaxPooling2D, Flatten, Dense
+from keras.preprocessing.image import ImageDataGenerator
 
 
 model_name = 'hotel_model.h5'
