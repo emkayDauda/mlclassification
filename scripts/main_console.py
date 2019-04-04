@@ -23,13 +23,13 @@ image_extensions = ('jpeg', 'png', 'jpg', 'tiff', 'gif')
 root_dir = os.path.abspath(os.path.dirname(__name__))
 
 
-# train_datagen = ImageDataGenerator(rescale=1./255, shear_range=0.2, zoom_range=0.2, horizontal_flip=True)
-# training_set = train_datagen.flow_from_directory('training_images/hotels/training_images', target_size=(64, 64), 
-#                                                   batch_size=8, class_mode='binary')
+train_datagen = ImageDataGenerator(rescale=1./255, shear_range=0.2, zoom_range=0.2, horizontal_flip=True)
+training_set = train_datagen.flow_from_directory('training_images/hotels/training_images', target_size=(64, 64), 
+                                                  batch_size=8, class_mode='binary')
 
-# test_datagen = ImageDataGenerator(rescale=1./255)
-# test_set = test_datagen.flow_from_directory('training_images/hotels/test_images', target_size=(64, 64),
-#                                              batch_size=8, class_mode='binary')
+test_datagen = ImageDataGenerator(rescale=1./255)
+test_set = test_datagen.flow_from_directory('training_images/hotels/test_images', target_size=(64, 64),
+                                             batch_size=8, class_mode='binary')
 
 
 
@@ -78,7 +78,7 @@ def predictor(input_type, folder_or_image, classifier):
         result = classifier.predict(image)
         outcome = prediction(result)
 
-        print(outcome)
+        print(outcome, '\n')
 
         return 
 
@@ -175,7 +175,7 @@ def main():
 
         input_type = 'folder'
         predictor(input_type, folder_or_image, classifier) 
-        print(f"Done! The '{file_name}' file has been written to respective folders in {folder_or_image}")
+        print(f"Done! The '{file_name}' file has been written to respective folders in {folder_or_image}\n")
         continue
 
     print("Exiting...")
