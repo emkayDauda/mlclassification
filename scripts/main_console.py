@@ -35,7 +35,7 @@ test_set = test_datagen.flow_from_directory('training_images/hotels/test_images'
 
 def train_model():
 
-    print('Training the model. Please wait...')
+    print('Training the default model. Please wait...')
 
     classifier = Sequential()
 
