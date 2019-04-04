@@ -7,7 +7,6 @@ import json
 
 import keras
 import numpy as np
-import tensorflow as tf
 
 from keras.models import Sequential
 from keras.preprocessing import image
@@ -138,7 +137,7 @@ def main():
 
     while 1:
     
-        model = input("\nEnter a model name to be used for the classification or press 0 to use the default one: ")
+        model = input("Enter a model name to be used for the classification or press 0 to use the default one: ")
         if model == 0:
             break
 
