@@ -1,6 +1,6 @@
 # Python 3.6+
 
-#  Please edit the folder structure in the flow_from_directory function on lines 32 and 28 to match
+#  Please edit the folder structure in the flow_from_directory function on lines 28 and 32 to match
 #  that required by the application. What's currently there is the folder structure on my system
 
 import os
@@ -25,11 +25,11 @@ root_dir = os.path.abspath(os.path.dirname(__name__))
 
         
 train_datagen = ImageDataGenerator(rescale=1./255, shear_range=0.2, zoom_range=0.2, horizontal_flip=True)
-training_set = train_datagen.flow_from_directory('training_images/training_images', target_size=(64, 64), 
+training_set = train_datagen.flow_from_directory('dataset/training_set', target_size=(64, 64), 
                                                 batch_size=8, class_mode='binary')
 
 test_datagen = ImageDataGenerator(rescale=1./255)
-test_set = test_datagen.flow_from_directory('training_images/test_images', target_size=(64, 64),
+test_set = test_datagen.flow_from_directory('dataset/test_set', target_size=(64, 64),
                                             batch_size=8, class_mode='binary')
 
 def train_model():
@@ -58,7 +58,7 @@ def train_model():
 
 def predictor(input_type, folder_or_image, classifier): 
     """ 
-    Accepts either a folder or an image and a classifier that's the ML model to use for the prediction. 
+    Accepts a folder or an image and a classifier that's the ML model to use for the prediction. 
     If an image is given as input, predicts whether the image is a hotel or not 
     and prints to the terminal
     
@@ -138,6 +138,7 @@ def main():
     
         model = input("Enter a model to be used (the file path) for the classification or press 0 to use the default one: ")
         if model == '0':
+            print(" ") # Aesthetics
             train_model()
             break
 
@@ -169,7 +170,7 @@ def main():
                     continue
                 
                 input_type = 'file'
-                predictor(input_type, folder_or_image, classifier)
+                predictor(input_type, folder_or_image, classifier)s
                 continue 
                 
 
