@@ -1,5 +1,8 @@
 # Python 3.6+
 
+#  Please edit the folder structure in the flow_from_directory function on lines 32 and 28 to match
+#  that required by the application. What's currently there is the folder structure on my system
+
 import os
 import sys
 import json
@@ -43,7 +46,7 @@ def train_model():
 
     classifier.compile(optimizer="adam", loss="binary_crossentropy", metrics=['accuracy'])
 
-    classifier.fit_generator(training_set, steps_per_epoch=1000,  epochs=2, validation_data=test_set, validation_steps=200)
+    classifier.fit_generator(training_set, steps_per_epoch=2000,  epochs=5, validation_data=test_set, validation_steps=200)
 
     classifier.save(model_name)
 
