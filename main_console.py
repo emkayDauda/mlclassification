@@ -34,7 +34,7 @@ test_set = test_datagen.flow_from_directory('dataset/test_set', target_size=(64,
 
 def train_model():
 
-    print('Training the default model. Please wait...')
+    print('Training the default model. Please wait...\n')
 
     classifier = Sequential()
 
