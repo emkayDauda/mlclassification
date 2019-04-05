@@ -170,7 +170,7 @@ def main():
                     continue
                 
                 input_type = 'file'
-                predictor(input_type, folder_or_image, classifier)s
+                predictor(input_type, folder_or_image, classifier)
                 continue 
                 
 
